@@ -1,0 +1,11 @@
+cs50
+Flask
+Flask-Session
+requests
+pytz
+Gunicorn
+scipy
+dlib
+numpy
+opencv-python
+
