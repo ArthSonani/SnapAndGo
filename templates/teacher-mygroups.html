@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="/static/styles.css" rel="stylesheet">
+    <title>Teacher</title>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="logo">
+        </div>
+
+        <ul class="navbar-ul">
+            <li class="options other hide-m" ><a class="links" id="cr-gp" href="/teacher/creategroup">
+                <span class="material-symbols-outlined">add</span>
+                Create Group
+            </a></li>
+            <li class="options hide-m" id="sign-out"><a class="links" href="/logout">Sign Out</a></li>
+            <li class="menu-button" onclick="show_slide()"> <span class="material-symbols-outlined">menu</span> </li>
+        </ul>
+
+        <ul class="side-bar">
+            <li class="options menu-c-button" onclick="hide_slide()"> <span class="material-symbols-outlined">close</span> </li>
+            <li class="options other"><a class="links" id="cr-gp" href="/teacher/creategroup">
+                <span class="material-symbols-outlined">add</span>
+                Create Group
+            </a></li>
+            <li class="options" id="sign-out"><a class="links" href="/logout">Sign Out</a></li>
+        </ul>
+
+    </nav>
+
+
+
+    <div id="mygp-home">
+        {% for group in groups %}
+            <a class="sub-names" href="/teacher/group/{{ group }}">
+                <div class="subjects"><span>{{ group }}</span></div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <script src="/static/actions.js"></script>
+</body>
+</html>

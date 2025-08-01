@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <section id="main">
+
+        <div id="main-co">
+            <div class="main-logo"></div>
+            <div id="main-co-container" class="animated-paragraph">
+                
+            </div>
+        </div>
+
+        <div id="main-form">
+            <div id="role-ch">
+                <div id="role-ch1">
+                    <h3>Choose Your Role</h3>
+                </div>
+
+                <div id="role-ch3">
+                    <div id="stu-img" onclick="stu_log()"></div>
+                    <h3>Student</h3>
+                </div>
+
+                <div id="role-ch2">
+                    <div id="teach-img" onclick="teach_log()"></div>
+                    <h3>Teacher</h3>
+                </div>
+            </div>
+
+
+            <div id="form-co">
+                <div id="form-detail">
+
+                    <div id="teach-log">
+                        <form action="/login" method="post" enctype="multipart/form-data" class="forms">
+                            <div class="form-group">
+                                <label for="uname">Username</label>
+                                <input name="username" id="uname" type="text" placeholder="Username" required
+                                    class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="pass">Password</label>
+                                <input name="password" id="pass" type="password" placeholder="Password" required
+                                    class="form-cont">
+                            </div>
+                            {% if error %}
+                                <small style="color: red;">{{ error }}</small>
+                            {% endif %}
+                            <input type="hidden" name="role" value="teacher">
+                            <div class="form-bottom">
+                                <span>New here? <a onclick="show_teach_reg()"> Register</a></span>
+                                <button id="login-button">Login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="stu-log">
+                        <form action="/login" method="post" enctype="multipart/form-data" class="forms">
+                            <div class="form-group">
+                                <label for="roll-no">Roll No</label>
+                                <input name="username" id="roll-no" type="text" placeholder="Roll No" required
+                                    class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="pass">Password</label>
+                                <input name="password" id="pass" type="password" placeholder="Password" required
+                                    class="form-cont">
+                            </div>
+                            {% if error %}
+                                <small style="color: red;">{{ error }}</small>
+                            {% endif %}
+                            <input type="hidden" name="role" value="student">
+                            <div class="form-bottom">
+                                <span>New here? <a onclick="show_stu_reg()"> Register</a></span>
+                                <button id="login-button">Login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="stu-reg">
+                        <form action="/register_student" method="post" enctype="multipart/form-data" class="forms" onsubmit="return checkFileSize()">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input name="name" id="name" type="text" placeholder="Name" required class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="roll-no">Roll No</label>
+                                <input name="rollno" id="roll-no" type="text" placeholder="Roll No" required
+                                    class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="pass">Set Password</label>
+                                <input name="password" id="pass" type="password" placeholder="Password" required
+                                    class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="pass-co">Confirm Password</label>
+                                <input name="confirmation" id="pass-co" type="password" placeholder="Re-Enter Password"
+                                    required class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="photo" id="upload-photo">
+                                    <span class="material-symbols-outlined">add_photo_alternate</span>
+                                    Upload Photo
+                                </label>
+                                <small>Maximum file size: 5MB</small>
+                                <small id="fileSizeMsg"></small>
+                                <input type="file" class="form-control-file" id="photo" name="photo" onchange="checkFileSize()">
+                            </div>
+                            <div class="form-bottom">
+                                <button id="reg-button">Register</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="teach-reg">
+                        <form action="/register_teacher" method="post" enctype="multipart/form-data" class="forms">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input name="name" id="name" type="text" placeholder="Name" required class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="uname">Username</label>
+                                <input name="username" id="uname" type="text" placeholder="Username" required
+                                    class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="pass">Set Password</label>
+                                <input name="password" id="pass" type="password" placeholder="Password" required
+                                    class="form-cont">
+                            </div>
+                            <div class="form-group">
+                                <label for="pass-co">Confirm Password</label>
+                                <input name="confirmation" id="pass-co" type="password" placeholder="Re-Enter Password"
+                                    required class="form-cont">
+                            </div>
+                            <div class="form-bottom">
+                                <button id="reg-button">Register</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="/static/actions.js"></script>
+</body>
+
+</html>

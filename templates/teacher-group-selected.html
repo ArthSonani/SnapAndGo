@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/static/styles.css"> 
+    <title>Teacher Date Picker</title>
+</head>
+<body>
+    
+    <nav id="navbar">
+        <div class="logo">
+        </div>
+
+        <ul class="navbar-ul">
+            <li class="options other hide-m"><a class="links" href="/teacher/mygroups">My Groups</a></li>
+            <li class="options hide-m" id="sign-out"><a class="links" href="/logout">Sign Out</a></li>
+            <li class="menu-button" onclick="show_slide()"> <span class="material-symbols-outlined">menu</span> </li>
+        </ul>
+
+        <ul class="side-bar">
+            <li class="options menu-c-button" onclick="hide_slide()"> <span class="material-symbols-outlined">close</span> </li>
+            <li class="options other"><a class="links" href="/teacher/mygroups">My Groups</a></li>
+            <li class="options" id="sign-out"><a class="links" href="/logout">Sign Out</a></li>
+        </ul>
+
+    </nav>
+
+
+    <div class="dt-home">
+        <div class="dt-head">
+            <p>{{ group_name }}</p>
+        </div>
+        <div class="dt-body">
+            <a href="/teacher/group/{{ group_name }}/update" id="update">
+                <span class="material-symbols-outlined"> Update </span>
+                Update 
+            </a>
+            <a href="/teacher/{{ group_name }}/attendance" id="summary">
+                <span class="material-symbols-outlined">Summarize</span>
+                View Attendance
+            </a>
+        </div>
+    </div>
+    
+    <script src="/static/actions.js"></script>
+</body>
+</html>

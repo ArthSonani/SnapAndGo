@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="/static/styles.css" rel="stylesheet">
+    <title>Student Table</title>
+</head>
+
+<body>
+
+    <nav id="navbar">
+        <div class="logo">
+        </div>
+
+        <ul class="navbar-ul">
+            <li class="options other hide-m"><a class="links" href="/student/mygroups">My Groups</a></li>
+            <li class="options other hide-m"><a class="links" href="/student/joingroup">Join Group</a></li>
+            <li class="options hide-m" id="sign-out"><a class="links" href="/logout">Sign Out</a></li>
+            <li class="menu-button" onclick="show_slide()"> <span class="material-symbols-outlined">menu</span> </li>
+        </ul>
+
+        <ul class="side-bar">
+            <li class="options menu-c-button" onclick="hide_slide()"> <span class="material-symbols-outlined">close</span> </li>
+            <li class="options other"><a class="links" href="/student/mygroups">My Groups</a></li>
+            <li class="options other"><a class="links" href="/student/joingroup">Join Group</a></li>
+            <li class="options" id="sign-out"><a class="links" href="/logout">Sign Out</a></li>
+        </ul>
+
+    </nav>
+
+    <div id="table-container">
+        <div id="table-head">
+            <p>{{ subject }}</p>
+        </div>
+        <div id="table-body">
+            <table>
+                <thead>
+                    <tr>   <th>DATE</th> <th>TIME</th> <th>STATUS</th>   </tr>
+                </thead>
+
+                <tbody>
+                    {% for record in records %}
+                        <tr>   
+                            <td>{{ record[0] }}</td> 
+                            <td>{{ record[1] }}</td> 
+                            {% if record[2] == "Present" %}
+                                <td><span class="pr">Present</span></td> 
+                            {% else %}
+                                <td><span class="ab">Absent</span></td> 
+                            {% endif %}  
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/static/actions.js"></script>
+</body>
+</html>
